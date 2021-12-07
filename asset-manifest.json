@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/what-eat-lunch/static/css/main.500eb7e9.chunk.css",
+    "main.js": "/what-eat-lunch/static/js/main.cb8abf50.chunk.js",
+    "main.js.map": "/what-eat-lunch/static/js/main.cb8abf50.chunk.js.map",
+    "runtime-main.js": "/what-eat-lunch/static/js/runtime-main.c8d11ef7.js",
+    "runtime-main.js.map": "/what-eat-lunch/static/js/runtime-main.c8d11ef7.js.map",
+    "static/css/2.d8f0d745.chunk.css": "/what-eat-lunch/static/css/2.d8f0d745.chunk.css",
+    "static/js/2.5bcc7d9e.chunk.js": "/what-eat-lunch/static/js/2.5bcc7d9e.chunk.js",
+    "static/js/2.5bcc7d9e.chunk.js.map": "/what-eat-lunch/static/js/2.5bcc7d9e.chunk.js.map",
+    "index.html": "/what-eat-lunch/index.html",
+    "static/css/2.d8f0d745.chunk.css.map": "/what-eat-lunch/static/css/2.d8f0d745.chunk.css.map",
+    "static/css/main.500eb7e9.chunk.css.map": "/what-eat-lunch/static/css/main.500eb7e9.chunk.css.map",
+    "static/js/2.5bcc7d9e.chunk.js.LICENSE.txt": "/what-eat-lunch/static/js/2.5bcc7d9e.chunk.js.LICENSE.txt",
+    "static/media/busy.svg": "/what-eat-lunch/static/media/busy.c4668539.svg",
+    "static/media/default.svg": "/what-eat-lunch/static/media/default.1f281972.svg",
+    "static/media/disconnected.svg": "/what-eat-lunch/static/media/disconnected.9c7ea75e.svg",
+    "static/media/empty-icon.svg": "/what-eat-lunch/static/media/empty-icon.0e5fd287.svg",
+    "static/media/empty.svg": "/what-eat-lunch/static/media/empty.f2b844b2.svg",
+    "static/media/selector-check-mark.svg": "/what-eat-lunch/static/media/selector-check-mark.11465817.svg",
+    "static/media/slider.css": "/what-eat-lunch/static/media/slider-thumb.3d161c84.svg",
+    "static/media/spin.svg": "/what-eat-lunch/static/media/spin.a71ffb17.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c8d11ef7.js",
+    "static/css/2.d8f0d745.chunk.css",
+    "static/js/2.5bcc7d9e.chunk.js",
+    "static/css/main.500eb7e9.chunk.css",
+    "static/js/main.cb8abf50.chunk.js"
+  ]
+}
