@@ -41,6 +41,10 @@ export default function useLunch() {
       })
     })
   }
+  // 获取午餐
+  const getLunchName = (index: number) => {
+    return lunchList.find((item) => item.index === index)?.name ?? '?'
+  }
   // 添加时间
   const insertTime = (index: number, time: number) => {
     setLunchList((list) => {
@@ -51,6 +55,8 @@ export default function useLunch() {
       })
     })
   }
+  // 重置时间
+
   const resetTime = () => {
     setLunchList((list) => {
       if (!list) return []
@@ -60,11 +66,13 @@ export default function useLunch() {
       })
     })
   }
+
   return {
     lunchList,
     insertLunch,
     deleteLunch,
     updateLunch,
+    getLunchName,
     insertTime,
     resetTime,
   }

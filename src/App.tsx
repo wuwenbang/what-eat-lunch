@@ -14,6 +14,7 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false)
   const {
     lunchList,
+    getLunchName,
     insertLunch,
     deleteLunch,
     updateLunch,
@@ -38,12 +39,9 @@ export default function App() {
     insertTime(index, moment().valueOf())
     setIsLoading(false)
   }
-
   return (
     <div className="App">
-      <Space className="header">
-        中午吃：{result >= 0 ? lunchList[result].name : '?'}
-      </Space>
+      <Space className="header">中午吃：{getLunchName(result)}</Space>
       <List className="content">
         {lunchList.map((lunch) => {
           return (
