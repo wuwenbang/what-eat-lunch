@@ -2,8 +2,8 @@ import { useLocalStorageState } from 'ahooks'
 export interface Lunch {
   index: number
   name: string
+  lastTime?: number
 }
-
 export const DEAFULT_LUNCH_LIST = [
   { index: 0, name: '小喜田' },
   { index: 1, name: '谷田稻香' },
@@ -41,10 +41,31 @@ export default function useLunch() {
       })
     })
   }
+  // 添加时间
+  const insertTime = (index: number, time: number) => {
+    setLunchList((list) => {
+      if (!list) return []
+      return list.map((item) => {
+        if (item.index === index) return { ...item, lastTime: time }
+        else return item
+      })
+    })
+  }
+  const resetTime = () => {
+    setLunchList((list) => {
+      if (!list) return []
+      return list.map((item) => {
+        const { index, name } = item
+        return { index, name }
+      })
+    })
+  }
   return {
     lunchList,
     insertLunch,
     deleteLunch,
     updateLunch,
+    insertTime,
+    resetTime,
   }
 }

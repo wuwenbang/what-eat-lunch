@@ -1,30 +1,50 @@
-import { Button, Dialog, Input, List, Space } from 'antd-mobile'
+import { Button, Dialog, Input, List, Space, Tag } from 'antd-mobile'
 import { useState } from 'react'
 import useLunch, { Lunch } from './hooks/useLunch'
-import { random, sleep } from './utils'
+import { isThisWeek, random, sleep } from './utils'
 import './App.scss'
-
+import moment from 'moment'
 
 export default function App() {
-  const [result, setResult] = useState<string>('?')
+  const [result, setResult] = useState<number>(-1)
   const [isEditVisible, setIsEditVisible] = useState(false)
   const [isCreateVisible, setIsCreateVisible] = useState(false)
   const [inputValue, setInputValue] = useState('')
   const [currentLunch, setCurrentLunch] = useState<Lunch>()
-  const { lunchList, insertLunch, deleteLunch, updateLunch } = useLunch()
+  const [isLoading, setIsLoading] = useState(false)
+  const {
+    lunchList,
+    insertLunch,
+    deleteLunch,
+    updateLunch,
+    insertTime,
+    resetTime,
+  } = useLunch()
   // 获取随机数
   const getResult = async () => {
+    setIsLoading(true)
+    const list = lunchList.filter((lunch) => {
+      if (!lunch.lastTime) return true
+      if (isThisWeek(lunch.lastTime)) return false
+      return true
+    })
+    const indexList = list.map((item) => item.index)
+    let index = random(indexList)
     for (let i = 0; i < 10; i++) {
-      const index = random(lunchList.length)
-      setResult(lunchList[index].name)
+      index = random(indexList)
+      setResult(index)
       await sleep(100)
     }
+    insertTime(index, moment().valueOf())
+    setIsLoading(false)
   }
 
   return (
     <div className="App">
-      <Space className="top">中午吃：{result}</Space>
-      <List>
+      <Space className="header">
+        中午吃：{result >= 0 ? lunchList[result].name : '?'}
+      </Space>
+      <List className="content">
         {lunchList.map((lunch) => {
           return (
             <List.Item
@@ -50,6 +70,11 @@ export default function App() {
               }
             >
               {lunch.name}
+              {lunch.lastTime && isThisWeek(lunch.lastTime) && (
+                <Tag round color="success" style={{ marginLeft: 8 }}>
+                  本周吃过
+                </Tag>
+              )}
             </List.Item>
           )
         })}
@@ -113,17 +138,15 @@ export default function App() {
           </Space>
         }
       />
-      <Space className="bottom">
-        <Button
-          onClick={() => {
-            setIsCreateVisible(true)
-          }}
-          color="success"
-        >
+      <Space className="footer">
+        <Button onClick={() => setIsCreateVisible(true)} color="success">
           增加选项
         </Button>
-        <Button color="primary" onClick={getResult}>
+        <Button color="primary" onClick={getResult} loading={isLoading}>
           中午吃什么
+        </Button>
+        <Button color="warning" onClick={resetTime}>
+          重置时间
         </Button>
       </Space>
     </div>
